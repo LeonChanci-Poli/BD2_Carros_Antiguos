@@ -8,3 +8,5 @@ npm i express connect-flash bcryptjs express-handlebars express-session method-o
 
 --Ejecutar el siguiente comando tambien:
 npm install dotenv nodemon handlebars npm-check-updates
+
+--Crear la bd en MongoDB llamada: oldCars
