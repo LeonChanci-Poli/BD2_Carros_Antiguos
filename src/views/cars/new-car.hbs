@@ -1,0 +1,69 @@
+<div class="col-md4 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>Registrar Carro</h3>
+        </div>
+        <div class="card-body">
+            <form action="/cars/new-car" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="idPlaca" class="form-control" placeholder="Número Placa *" autofocus required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="nombreCarro" class="form-control" placeholder="Nombre Carro *" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="marcaCarro" required>
+                                <option value="" selected disabled hidden>Marca Carro *</option>
+                                {{#each brands}}
+                                    <option value={{idMarca}}>{{nombreMarca}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="modeloCarro" class="form-control" placeholder="Modelo Carro *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="colorCarro" class="form-control" placeholder="Color Carro *" required>
+                        </div>                       
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="number" name="valorCarro" class="form-control" placeholder="Valor Carro $USD *" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="pais" required>
+                                <option value="" selected disabled>Pais *</option>
+                                {{#each countries}}
+                                    <option value={{idPais}}>{{nombrePais}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="form-group">
+                                    <input type="file" title="Sube una imagen de tu carro" name="imagenCarro" class="form-control" required>
+                                </div> 
+                            </div>
+                            <div class="col-md-5">
+                                <div>
+                                    <img 
+                                        src="../../../example.jpg"
+                                        alt="image Car"
+                                        height="170"
+                                        width="200" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">
+                        Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Carros Antiguos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mg-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Acerca de</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {{#if user}}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                            data-toggle="dropdown" aria-expanded="false">
+                            Mis Carros
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/cars">
+                                    <i class="fa fa-car" aria-hidden="true"></i>
+                                    Ver mis Carros
+                                </a>
+                                <a class="dropdown-item" href="/cars/add">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                    Agregar Carro
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/purchase-cars">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    $ Comprar Carro
+                                </a>
+                            </div>
+                        </li>
+                    {{else }}
+                        <ul class="navbar-nav mg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/users/signin">Iniciar Sesión</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/users/signup">Regístrate</a>
+                            </li>
+                        </ul>
+                    {{/if }}
+                    {{#if user}}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                            data-toggle="dropdown" aria-expanded="false">
+                            My Count
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/users/edit/{{ userId }}">
+                                    <i class="fa fa-user" aria-hidden="true"></i>Perfil
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/users/logout">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+                                </a>
+                            </div>
+                        </li>
+                    {{/if }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

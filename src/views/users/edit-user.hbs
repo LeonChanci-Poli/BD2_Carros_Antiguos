@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Mi perfil
+            </div>
+            <div class="card-body">
+              <form action="/users/edit/{{user._id}}?_method=PUT" method="POST">
+              <input type="hidden" name="_method" value="PUT"/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="numeroIdentificacion" placeholder="Numero Identificación" value="{{user.numeroIdentificacion}}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="nombreCompleto" placeholder="Nombre Completo" value="{{user.nombreCompleto}}" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="correoElectronico" placeholder="Correo Electrónico" value="{{user.correoElectronico}}" disabled>
+                            </div></div>
+                         <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="telefono" placeholder="Teléfono" value="{{user.telefono}}" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="textArea" class="form-control" name="direccion" placeholder="Dirección" value="{{user.direccion}}" required>
+                        </div>
+                        <!--<div class="form-group">
+                            <input type="password" class="form-control" name="contrasena" placeholder="Contraseña" value="{{contrasena}}">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="confirmarContrasena" placeholder="Confirmar Contraseña" value="{{confirmarContrasena}}">
+                        </div>
+                        <a href="/users/edit-profile/{{ user._id }}"> 
+                            <button class="btn btn-dark " style="font-size: 20px;padding: 10px;">
+                                <i class="fa fa-edit" aria-hidden="true"></i>
+                            </button>
+                        </a>-->
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block" type="submit">
+                                Actualizar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>

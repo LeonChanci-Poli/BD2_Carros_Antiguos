@@ -1,0 +1,81 @@
+<div class="row">
+    {{#each cars}}
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <h2 class="card-header card-title d-flex justify-content-between align-items-center">
+                    {{nombreCarro}}
+                </h2>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="card-subtitle">{{brand.[0].nombreMarca}}</h3>
+                            <p class="card-subtitle">{{modeloCarro}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;" class="align-items-center">
+                    <img
+                    src="../../../uploadImages/{{imagenCarro}}"
+                    alt="image Car"
+                    height="200"
+                    width="235" />
+                </div>
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4>{{valorCarro}} $USD</h4>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex justify-content-end">
+                                <a href="/cars/edit/{{ _id }}">
+                                    <button class="btn btn-dark btn-block" style="font-size: 28px;padding: 10px;" title="Editar Carro">
+                                        <i class="fa fa-edit" aria-hidden="true"></i> 
+                                    </button>
+                                </a>
+                                <!--<form action="/cars/delete/{{ _id }}?_method=DELETE" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE"/>
+                                    <button class="btn btn-danger btn-block" style="font-size: 28px;padding: 10px;" 
+                                        type="submit" title="Eliminar Carro">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                </form>-->
+                                <button class="btn btn-danger btn-block" style="font-size: 28px;padding: 10px;" 
+                                        type="button" title="Eliminar Carro"
+                                        data-toggle="modal" data-target="#exampleModalCenter{{ _id }}">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+<!-- MODAL ELIMINAR CARRO-->
+<div class="modal fade" id="exampleModalCenter{{ _id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Elininar Carro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Está seguro que desea eliminar el carro?
+        <br/><br/>
+        <p style="font-weight: bold">{{nombreCarro}} - {{brand.[0].nombreMarca}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" title="Eliminar Definitivamente">
+            Cancelar</button>
+        <form action="/cars/delete/{{ _id }}?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <button type="submit" class="btn btn btn-danger btn-block">Eliminar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   {{/each}}
+  </div>

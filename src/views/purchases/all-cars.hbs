@@ -1,0 +1,101 @@
+<div class="row">
+    {{#each cars}}
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <h2 class="card-header card-title d-flex justify-content-between align-items-center">
+                    {{nombreCarro}}
+                </h2>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="card-subtitle">{{brand.[0].nombreMarca}}</h3>
+                            <p class="card-subtitle">{{modeloCarro}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;" class="align-items-center">
+                    <img
+                    src="../../../uploadImages/{{imagenCarro}}"
+                    alt="image Car"
+                    height="200"
+                    width="235" />
+                </div>
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4>{{valorCarro}} $USD</h4>
+                            <p class="card-subtitle">{{userInfo.[0].nombreCompleto}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex justify-content-end">
+                                <a href="#">
+                                    <button class="btn btn-info btn-block" title="Ver mas información"
+                                            data-toggle="modal" data-target="#exampleModalCenter{{_id}}"
+                                            style="font-size: 20px;padding: 10px;">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> 
+                                    </button>
+                                </a>
+<!-- MODAL --> 
+<div class="modal fade" id="exampleModalCenter{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Información Carro y Vendedor</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">  
+                <div class="form-group"><label for="nombreCarro">Nombre:</label>
+                    <input type="text" name="nombreCarro" id="nombreCarro" value="{{nombreCarro}}" class="form-control card-subtitle" disabled>
+                </div>
+                <div class="form-group"><label for="idPlaca">Placa:</label>
+                    <input type="text" name="idPlaca" id="idPlaca" value="{{idPlaca}}" class="form-control card-subtitle" disabled>
+                </div>
+                <div class="form-group"><label for="marcaCarro">Marca:</label>
+                    <input type="text" name="marcaCarro" value="{{brand.[0].nombreMarca}}" class="form-control card-subtitle" disabled>
+                </div>
+                <div class="form-group"><label for="modeloCarro">Modelo:</label>
+                    <input type="text" name="modeloCarro" value="{{modeloCarro}}" class="form-control card-subtitle" disabled>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group"><label for="colorCarro">Color:</label>    
+                    <input type="text" name="colorCarro" value="{{colorCarro}}" class="form-control card-subtitle" disabled>
+                </div>
+                <div class="form-group"><label for="pais">Pais:</label>
+                    <input type="text" name="pais" value="{{country.[0].nombrePais}}" class="form-control card-subtitle" disabled>
+                </div>
+                <div class="form-group"><label for="valorCarro">Valor:</label>
+                    <input type="text" name="valorCarro" value="{{valorCarro}} $USD" class="form-control card-subtitle" disabled>
+                </div>
+                <div class="form-group"><label for="valorCarro">Vendedor:</label>
+                    <input type="text" name="valorCarro" value="{{userInfo.[0].nombreCompleto}}" class="form-control card-subtitle" disabled>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Comprar
+             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+                                <form action="#" method="POST" >
+                                    <button class="btn btn-success btn-block" style="font-size: 20px;padding: 10px;" type="submit" title="¿Comprar?">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   {{/each}}
+  </div>
