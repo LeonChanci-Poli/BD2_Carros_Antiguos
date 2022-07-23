@@ -13,6 +13,26 @@ const Country = require('../models/Country')
 //Exportamos el modelo de la BD (Brand)
 const Brand = require('../models/Brand')
 
+//Función asíncrona para obtener todas los carros del usuario logeado
+carsCtrl.renderCars = async (req, res) => {
+  //Se crea un agregate para sacar el nombre de la marca
+  const cars = await Car.aggregate([
+      {
+        '$match': { 'user': req.user.id }       
+      }, {
+        '$lookup': {
+          'from': 'brands', 
+          'localField': 'marcaCarro', 
+          'foreignField': 'idMarca', 
+          'as': 'brand'
+        }
+      }
+  ]);
+
+  //Pasarle a la vista "all-cars.hbs" los carros retornados de la BD
+  res.render('cars/all-cars', { cars });
+}
+
 //Función para mostrar el formulario de agregar carro
 carsCtrl.renderCarForm = async (req, res) => {
     //Obtener los paises de la BD 
@@ -46,25 +66,6 @@ carsCtrl.createNewCar = async (req, res) => {
     await newCar.save();
     req.flash('success_msg', '¡Carro agregado exitosamente!');
     res.redirect('/cars');
-}
-
-//Función asíncrona para obtener todas los carros del usuario logeado
-carsCtrl.renderCars = async (req, res) => {
-    //Se crea un agregate para sacar el nombre de la marca
-    const cars = await Car.aggregate([
-        {
-          '$match': { 'user': req.user.id }
-        }, {
-          '$lookup': {
-            'from': 'brands', 
-            'localField': 'marcaCarro', 
-            'foreignField': 'idMarca', 
-            'as': 'brand'
-          }
-        }
-    ]);
-    //Pasarle a la vista "all-cars.hbs" los carros retornados de la BD
-    res.render('cars/all-cars', { cars });
 }
 
 //Función asíncrona para traer el carro a editar y mostrarla en el formulario de edición

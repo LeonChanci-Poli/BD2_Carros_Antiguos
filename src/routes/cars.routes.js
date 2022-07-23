@@ -48,6 +48,10 @@ const uploadImage = multer({
     }
 }).single('imagenCarro');
 
+//*********************************** GET ALL MY CARS ***********************************//
+//Cuando se obtenga la ruta '/cars' ejecutar la función de renderCars
+router.get('/cars', isAuthenticated, renderCars);
+
 
 //************************************* NEW CAR *************************************//
 //Cuando se obtenga la ruta '/cars/add' ejecutar la función de renderCarForm
@@ -55,10 +59,6 @@ router.get('/cars/add', isAuthenticated, renderCarForm);
 
 //Cuando se envíe por POST; desde la ruta '/cars/new-car' ejecutar la función de createNewCar
 router.post('/cars/new-car', uploadImage, isAuthenticated, createNewCar);
-
-//*********************************** GET ALL MY CARS ***********************************//
-//Cuando se obtenga la ruta '/cars' ejecutar la función de renderCars
-router.get('/cars', isAuthenticated, renderCars);
 
 
 //*********************************** EDIT CARS ***********************************//

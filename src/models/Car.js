@@ -40,6 +40,14 @@ const CarShema = new Schema({
     idUser: {
         type : String,
         required : true
+    },
+    idCompra: {
+        type : String,
+        required : false
+    },
+    idVenta: {
+        type : String,
+        required : false
     }
 }, {
     timestamps : true

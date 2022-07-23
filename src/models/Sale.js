@@ -1,19 +1,19 @@
 const {Schema, model} = require('mongoose');
 
-const PurchaseShema = new Schema({
-    idCompra: {
+const SaleShema = new Schema({
+    idVenta: {
         type : String,
         required : true
     },
-    fechaCompra: {
+    fechaVenta: {
         type : Date,
         required : true
     },
-    valorCompra: {
+    valorVenta: {
         type : Number,
         required : true
     },
-    idComprador: {
+    idVendedor: {
         type : String,
         required : true
     },
@@ -25,4 +25,4 @@ const PurchaseShema = new Schema({
     timestamps : true
 })
 
-module.exports = model('Purchase', PurchaseShema);
+module.exports = model('Sale', SaleShema);

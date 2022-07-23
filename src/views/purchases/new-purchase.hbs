@@ -1,0 +1,128 @@
+<div class="col-md4 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>Registrar Compra</h3>
+        </div>
+        <div class="card-body">
+            <form action="/purchases/new-purchase" method="POST">
+            <input type="hidden" name="idCar" value="{{car.[0]._id}}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Datos del carro</h5>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group"><label for="nombreCarro">Nombre</label>
+                                    <input type="text" name="nombreCarro" class="form-control card-subtitle" value="{{car.[0].nombreCarro}}" placeholder="Nombre Carro" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group"><label for="marcaCarro">Marca</label>
+                                    <input type="text" name="marcaCarro" class="form-control card-subtitle" value="{{car.[0].brand.[0].nombreMarca}}" placeholder="Marca" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group"><label for="pais">País</label>
+                                    <input type="text" name="pais" class="form-control card-subtitle" value="{{car.[0].country.[0].nombrePais}}" placeholder="País" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group"><label for="placaCarro">Placa</label>
+                                    <input type="text" name="placaCarro" class="form-control card-subtitle" value="{{car.[0].idPlaca}}" placeholder="Número Placa" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group"><label for="modeloCarro">Modelo</label>
+                                    <input type="number" name="modeloCarro" class="form-control card-subtitle" value="{{car.[0].modeloCarro}}" placeholder="Modelo" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group"><label for="colorCarro">Color</label>
+                                    <input type="text" name="colorCarro" class="form-control card-subtitle" value="{{car.[0].colorCarro}}" placeholder="Color" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 style="text-align: right;">Datos del Vendedor</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div style="text-align: center;">
+                                    <img 
+                                        src="../../../uploadImages/{{car.[0].imagenCarro}}"
+                                        alt="image Car"
+                                        height="160"
+                                        width="190" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="nombreVendedor" class="form-control" value="{{car.[0].userInfo.[0].nombreCompleto}}" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="idVendedor" class="form-control" value="{{car.[0].userInfo.[0].numeroIdentificacion}}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Datos de la compra</h5>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group"><label for="idComprador">ID Comprador</label>
+                                    <input type="text" name="idComprador" class="form-control card-subtitle" value="{{user.numeroIdentificacion}}" placeholder="ID Comprador" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group"><label for="fechaCompra">Fecha</label>
+                                    <input type="text" name="fechaCompra" class="form-control card-subtitle" value="{{date}}" placeholder="Fecha Compra" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+								<div class="col-md-6">
+									<div class="form-group"><label for="valorCompra">Valor Compra</label>
+										<input type="number" name="valorCompra" class="form-control card-subtitle" value="{{car.[0].valorCarro}}" placeholder="Valor Compra" readonly>
+									</div>
+								</div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <!--<input type="text" name="idCompra" class="form-control card-subtitle" placeholder="Código Factura" hidden readonly>-->
+                                </div>
+                            </div>
+                        </div>
+                        <h5 style="text-align: right;">Datos de contacto</h5>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" name="direccion" class="form-control" value="{{user.direccion}}" placeholder="Dirección Despacho" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="telefono" class="form-control" value="{{user.telefono}}" placeholder="Teléfono Contacto" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="/purchase-cars">
+                            <button class="btn btn-secondary btn-block" type="button">
+                                Cancelar
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <button class="btn btn-success btn-block" type="submit">
+                            Iniciar Compra
+                        </button></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
