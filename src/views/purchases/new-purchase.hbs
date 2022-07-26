@@ -1,7 +1,7 @@
 <div class="col-md4 mx-auto">
     <div class="card">
         <div class="card-header">
-            <h3>Registrar Compra</h3>
+            <h4>Registrar Compra</h4>
         </div>
         <div class="card-body">
             <form action="/purchases/new-purchase" method="POST">
@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="nombreVendedor" class="form-control" value="{{car.[0].userInfo.[0].nombreCompleto}}" readonly>
+                                    <input type="text" name="nombreVendedor" class="form-control" value="{{car.[0].userInfo.[0].primerNombre}} {{car.[0].userInfo.[0].primerApellido}}" readonly>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="idVendedor" class="form-control" value="{{car.[0].userInfo.[0].numeroIdentificacion}}" readonly>
@@ -79,16 +79,11 @@
                             </div>
                         </div>
                         <div class="row">
-								<div class="col-md-6">
-									<div class="form-group"><label for="valorCompra">Valor Compra</label>
-										<input type="number" name="valorCompra" class="form-control card-subtitle" value="{{car.[0].valorCarro}}" placeholder="Valor Compra" readonly>
-									</div>
+							<div class="col-md-6">
+							    <div class="form-group"><label for="valorCompra">Valor Compra</label>
+									<input type="number" name="valorCompra" class="form-control card-subtitle" value="{{car.[0].valorCarro}}" placeholder="Valor Compra" readonly>
 								</div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <!--<input type="text" name="idCompra" class="form-control card-subtitle" placeholder="Código Factura" hidden readonly>-->
-                                </div>
-                            </div>
+							</div>
                         </div>
                         <h5 style="text-align: right;">Datos de contacto</h5>
                         <div class="row">
@@ -106,9 +101,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <input type="text" name="telefono" class="form-control" value="{{user.telefono}}" placeholder="Teléfono Contacto" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="celular" class="form-control" value="{{user.celular}}" placeholder="Celular Contacto" readonly>
                                 </div>
                             </div>
                             <div class="col-md-2">

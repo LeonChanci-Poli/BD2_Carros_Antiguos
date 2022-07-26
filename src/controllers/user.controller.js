@@ -18,7 +18,9 @@ usersCtrl.signUp = async (req, res)=> {
     const errors = [];
 
     //Obtenemos las variables que llegan del req.body
-    const { numeroIdentificacion, nombreCompleto, correoElectronico, contrasena, confirmarContrasena } = req.body;
+    const { numeroIdentificacion, primerNombre, segundoNombre,
+            primerApellido, segundoApellido, correoElectronico, 
+            contrasena, confirmarContrasena } = req.body;
     
     //Validar que las contraseñas sean iguales
     if(contrasena != confirmarContrasena){
@@ -34,7 +36,10 @@ usersCtrl.signUp = async (req, res)=> {
         res.render('users/signup', {
             errors,
             numeroIdentificacion,
-            nombreCompleto,
+            primerNombre,
+            segundoNombre,
+            primerApellido, 
+            segundoApellido,
             correoElectronico,
             contrasena,
             confirmarContrasena
@@ -44,17 +49,30 @@ usersCtrl.signUp = async (req, res)=> {
         //Buscar en la base de datos por medio del "correoElectronico"
         const emailUser = await User.findOne({ correoElectronico : correoElectronico });
 
+        const idUser = await User.findOne({ numeroIdentificacion : numeroIdentificacion });
+
         //Validar si el usuario ya existe o no
         if(emailUser){
             //Si ay existe saca mensaje de error o lo redirecciona
-            req.flash('error_msg', '¡El usuario ya existe!');
+            req.flash('error_msg', '¡El usuario ya está registrado con ese Email!');
+            res.redirect('/users/signup');
+        }else if(idUser){
+            req.flash('error_msg', '¡El usuario ya está registrado con esa Identificación!');
             res.redirect('/users/signup');
         }else{
             //Si no existe, se crea el usaurio en BD
             const telefono = null;
             const direccion = null;
-            const newUser = new User({numeroIdentificacion, nombreCompleto, correoElectronico, contrasena, telefono, direccion});
+            const celular = null;
+            let nombreCompleto = primerNombre.trim()+" "+segundoNombre.trim()+" "
+                                +primerApellido.trim()+" "+segundoApellido.trim();
+            nombreCompleto = nombreCompleto.replace("  "," ").trim();
+
+            const newUser = new User({numeroIdentificacion, nombreCompleto, primerNombre, segundoNombre,
+                                      primerApellido, segundoApellido, correoElectronico, contrasena, 
+                                      telefono, direccion, celular});
             newUser.contrasena = await newUser.encriptarContrasena(contrasena);
+            console.log(newUser);
             await newUser.save();
             req.flash('success_msg', '¡Usuario registrado exitosamente!');
             res.redirect('/users/signin');
@@ -91,9 +109,16 @@ usersCtrl.renderEditFormUser = async (req, res)=> {
 //Función asíncrona para actualizar los datos del usuario
 usersCtrl.updateUser = async (req, res)=> {
     //Extraer las variables que llegan del req.body
-    const { nombreCompleto, correoElectronico, telefono, direccion } = req.body;
+    const { primerNombre, segundoNombre, primerApellido, segundoApellido, 
+            correoElectronico, telefono, direccion, celular} = req.body;
+    
+    let nombreCompleto = primerNombre.trim()+" "+segundoNombre.trim()+" "
+                        +primerApellido.trim()+" "+segundoApellido.trim();
+    nombreCompleto = nombreCompleto.replace("  "," ").trim();        
+
     await User.findByIdAndUpdate(req.params.id, 
-        {nombreCompleto, correoElectronico, telefono, direccion});
+        {nombreCompleto, primerNombre, segundoNombre, primerApellido, segundoApellido,
+         correoElectronico, telefono, direccion, celular});
     req.flash('success_msg', '¡Perfil actualizado exitosamente!');
     res.redirect('/cars');
 }

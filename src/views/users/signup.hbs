@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-4 mx-auto">
+    <div class="col-md-5 mx-auto">
         <div class="card">
             <div class="card-header">
                 Registrar Usuario
@@ -7,10 +7,31 @@
             <div class="card-body">
                 <form action="/users/signup" method="POST">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="numeroIdentificacion" placeholder="Numero Identificación" value="{{numeroIdentificacion}}">
+                        <input type="number" class="form-control" name="numeroIdentificacion" placeholder="Número Identificación" value="{{numeroIdentificacion}}" required>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="nombreCompleto" placeholder="Nombre Completo" value="{{nombreCompleto}}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="primerNombre" placeholder="Primer Nombre" value="{{primerNombre}}" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="segundoNombre" placeholder="Segundo Nombre" value="{{segundoNombre}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="primerApellido" placeholder="Primer Apellido" value="{{primerApellido}}" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="segundoApellido" placeholder="Segundo Apellido" value="{{segundoApellido}}">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <input type="email" class="form-control" name="correoElectronico" placeholder="Correo Electrónico" value="{{correoElectronico}}">

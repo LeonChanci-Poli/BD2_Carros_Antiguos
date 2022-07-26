@@ -2,7 +2,7 @@
     <div class="col-md-10 mx-auto">
         <div class="card">
             <div class="card-header">
-                Mi perfil
+                <h4>Mi Perfil</h4>
             </div>
             <div class="card-body">
               <form action="/users/edit/{{user._id}}?_method=PUT" method="POST">
@@ -13,17 +13,42 @@
                             <input type="text" class="form-control" name="numeroIdentificacion" placeholder="Numero Identificación" value="{{user.numeroIdentificacion}}" disabled>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="nombreCompleto" placeholder="Nombre Completo" value="{{user.nombreCompleto}}" required>
-                        </div>
-                        <div class="form-group">
                             <input type="email" class="form-control" name="correoElectronico" placeholder="Correo Electrónico" value="{{user.correoElectronico}}" disabled>
-                            </div></div>
-                         <div class="col-md-6">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="primerNombre" placeholder="Primer Nombre" value="{{user.primerNombre}}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="segundoNombre" placeholder="Segundo Nombre" value="{{user.segundoNombre}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="primerApellido" placeholder="Primer Apellido" value="{{user.primerApellido}}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="segundoApellido" placeholder="Segundo Apellido" value="{{user.segundoApellido}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group">
                             <input type="text" class="form-control" name="telefono" placeholder="Teléfono" value="{{user.telefono}}">
                         </div>
                         <div class="form-group">
-                            <input type="textArea" class="form-control" name="direccion" placeholder="Dirección" value="{{user.direccion}}">
+                            <input type="text" class="form-control" name="direccion" placeholder="Dirección" value="{{user.direccion}}">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="celular" placeholder="Número Celular" value="{{user.celular}}">
                         </div>
                         <!--<div class="form-group">
                             <input type="password" class="form-control" name="contrasena" placeholder="Contraseña" value="{{contrasena}}">

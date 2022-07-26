@@ -10,6 +10,22 @@ const UserSchema = new Schema ({
         type : String,
         required : true
     },
+    primerNombre : {
+        type : String,
+        required : true
+    },
+    segundoNombre : {
+        type : String,
+        required : false
+    },
+    primerApellido : {
+        type : String,
+        required : true
+    },
+    segundoApellido : {
+        type : String,
+        required : false
+    },
     correoElectronico : {
         type : String,
         required : true,
@@ -24,6 +40,10 @@ const UserSchema = new Schema ({
         required : false
     },
     direccion : {
+        type : String,
+        required : false
+    },
+    celular : {
         type : String,
         required : false
     }

@@ -2,13 +2,13 @@
     {{#each cars}}
         <div class="col-md-4">
             <div class="card mb-3" style="border-radius: 10px;">
-                <h3 class="card-header card-title d-flex justify-content-between align-items-center">
+                <h4 class="card-header card-title d-flex justify-content-between align-items-center">
                     {{nombreCarro}}
-                </h3>
+                </h4>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4 class="card-subtitle">{{brand.[0].nombreMarca}}</h4>
+                            <h5 class="card-subtitle">{{brand.[0].nombreMarca}}</h5>
                             <p class="card-subtitle">{{modeloCarro}}</p>
                         </div>
                     </div>
@@ -24,7 +24,10 @@
                     <div class="row">
                         <div class="col-md-8">
                             <h4>{{valorCarro}} $USD</h4>
-                            <p class="card-subtitle">{{userInfo.[0].nombreCompleto}}</p>
+                            <p class="card-subtitle">
+                                {{userInfo.[0].primerNombre}}
+                                {{userInfo.[0].primerApellido}}
+                            </p>
                         </div>
                         <div class="col-md-4">
                             <div class="d-flex justify-content-end">
@@ -72,7 +75,7 @@
                     <input type="text" name="valorCarro" value="{{valorCarro}} $USD" class="form-control card-subtitle" disabled>
                 </div>
                 <div class="form-group"><label for="valorCarro">Vendedor:</label>
-                    <input type="text" name="nombreVendedor" value="{{userInfo.[0].nombreCompleto}}" class="form-control card-subtitle" disabled>
+                    <input type="text" name="nombreVendedor" value="{{userInfo.[0].primerNombre}} {{userInfo.[0].primerApellido}}" class="form-control card-subtitle" disabled>
                 </div>
             </div>
         </div>
