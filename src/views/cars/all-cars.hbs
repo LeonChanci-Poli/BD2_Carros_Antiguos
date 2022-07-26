@@ -1,5 +1,6 @@
 <div class="row">
-    {{#each cars}}
+    <!-- TODOS LOS CARROS (COMPRADOS, VENDIDOS Y REGISTRADOS) -->
+    {{#each fullCars}}
         <div class="col-md-4">
             <div class="card mb-3" style="border-radius: 10px;">
                 <h3 class="card-header card-title d-flex justify-content-between align-items-center">
@@ -22,25 +23,36 @@
                 </div>
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-md-8">
-                            {{#if idVenta}}
+                        <div class="col-md-9">
+                            {{#if isPurchase}}
                                 <del><h4>{{valorCarro}} $USD</h4></del>
-                                <b>
-                                    <p class="card-subtitle" style="background: black; color: white;
-                                                                    border-radius: 10px;
-                                                                    text-align: center;">
-                                        VENDIDO
-                                    </p>
-                                </b>
+                                <p class="card-subtitle" style="background: black; color: white;
+                                                                margin-top: -0.6rem!important;
+                                                                text-align: center;">
+                                    COMPRADO
+                                </p>
+                            {{else if isSale }}
+                                <del><h4>{{valorCarro}} $USD</h4></del>
+                                <p class="card-subtitle" style="background: black; color: white;
+                                                                margin-top: -0.6rem!important;
+                                                                text-align: center;">
+                                    VENDIDO
+                                </p>
                             {{else }}
-                                <h4>{{valorCarro}} $USD</h4>  
+                                <h4>{{valorCarro}} $USD</h4>
                             {{/if }}
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="d-flex justify-content-end">
-                            {{#if idVenta}}
+                            {{#if isPurchase}}
                                 <a href="#">
-                                    <button class="btn btn-info btn-block" style="font-size: 20px;padding: 10px;" title="Ver Detalles Venta">
+                                    <button class="btn btn-info btn-block" style="font-size: 20px;padding: 10px;" title="Ver Detalles Compra">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> 
+                                    </button>
+                                </a>
+                            {{else if isSale}}
+                                <a href="#">
+                                    <button class="btn btn-success btn-block" style="font-size: 20px;padding: 10px;" title="Ver Detalles Venta">
                                         <i class="fa fa-eye" aria-hidden="true"></i> 
                                     </button>
                                 </a>
@@ -54,7 +66,7 @@
                                         title="Eliminar Carro"
                                         data-toggle="modal" data-target="#exampleModalCenter{{ _id }}">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
-                                </button>                               
+                                </button>                                      
                             {{/if }}
 <!-- MODAL ELIMINAR CARRO-->
 <div class="modal fade" id="exampleModalCenter{{ _id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -90,4 +102,4 @@
             </div>
         </div>
    {{/each}}
-  </div>
+</div>

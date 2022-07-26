@@ -92,10 +92,17 @@
                         </div>
                         <h5 style="text-align: right;">Datos de contacto</h5>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-10">
                                 <div class="form-group">
-                                    <input type="text" name="direccion" class="form-control" value="{{user.direccion}}" placeholder="Dirección Despacho" readonly>
+                                    <input type="text" name="direccion" class="form-control" value="{{user.direccion}}" placeholder="Dirección Despacho" readonly required>
                                 </div>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="/users/edit/{{ user._id }}">
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                         <div class="row">
@@ -103,6 +110,13 @@
                                 <div class="form-group">
                                     <input type="text" name="telefono" class="form-control" value="{{user.telefono}}" placeholder="Teléfono Contacto" readonly>
                                 </div>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="/users/edit/{{ user._id }}">
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>

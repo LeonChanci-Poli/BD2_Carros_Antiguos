@@ -3,17 +3,17 @@ const {mongoose} = require('mongoose');
 //Se crea un objeto con 2 funciones
 const purchaseCtrl = {};
 
+//Exportamos el modelo de la BD (User)
+const User = require('../models/User');
+
+//Exportamos el modelo de la BD (Car)
+const Car = require('../models/Car');
+
 //Exportamos el modelo de la BD (Purchase)
 const Purchase = require('../models/Purchase');
 
 //Exportamos el modelo de la BD (Sale)
 const Sale = require('../models/Sale');
-
-//Exportamos el modelo de la BD (Car)
-const Car = require('../models/Car');
-
-//Exportamos el modelo de la BD (User)
-const User = require('../models/User'); 
 
 //Es un módulo para generar UUIDS
 const { v4: uuidv4 } = require('uuid');
@@ -51,9 +51,9 @@ purchaseCtrl.renderAllCars = async (req, res) => {
             }
         }
     ]);
+
     //Pasarle a la vista "all-cars.hbs" los carros retornados de la BD (que están en venta)
     res.render('purchases/all-cars', { cars });
-
 }
 
 //Función para mostrar el formulario de agregar una compra
