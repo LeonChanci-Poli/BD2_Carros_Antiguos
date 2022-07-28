@@ -8,5 +8,6 @@ mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     //useCreateIndex: true
 })
-.then(db => console.log('Base de datos conectada correctamente'))
+.then(db => console.log('Base de datos conectada correctamente: '+
+        'Nombre BD conectada: '+MONGODB_DATABASE))
 .catch(err => console.error(err));
