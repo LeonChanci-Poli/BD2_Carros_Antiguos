@@ -220,6 +220,8 @@ carsCtrl.renderCarForm = async (req, res) => {
 
 //Función asíncrona para crear/insertar una nuevo carro
 carsCtrl.createNewCar = async (req, res) => {
+
+  const errors = [];
     //Obtenemos las variables que llegan del req.body
     const { idPlaca, nombreCarro, marcaCarro, modeloCarro, colorCarro, valorCarro, pais } = req.body;
     //Creamos un objeto, en formato JSON para posteriormente guardarlo
@@ -228,19 +230,39 @@ carsCtrl.createNewCar = async (req, res) => {
             });
     //Asociar el registro del carro, al usuario en sesión
     newCar.user = req.user.id;
-    newCar.idUser = req.user.numeroIdentificacion;
-
     //Asociar la ruta de una imagen subida del carro a insertar
-
-    console.log(req.file);
+    newCar.idUser = req.user.numeroIdentificacion;
 
     if(req.file != null){
         newCar.imagenCarro = req.file.filename;      
     }
-    //Funcionalidad asíncrona AWAIT = esperar una promesa
-    await newCar.save();
-    req.flash('success_msg', '¡Carro agregado exitosamente!');
-    res.redirect('/cars');
+    
+    //Validar si el carro ya existe en bd con el número de la placa
+    const car = await Car.findOne({ idPlaca : idPlaca });
+    if(car){
+      errors.push({text: '¡El carro ya está registrado con esa placa!'});
+    }
+
+    if(car){
+      const countries = await Country.find().lean();
+      const brands = await Brand.find().lean();
+      //Buscamos la marca y el pais en bd
+      const marca = await Brand.find({'idMarca': marcaCarro},{'nombreMarca': 1}).lean();
+      const paisCarro = await Country.find({'idPais': pais},{'nombrePais': 1}).lean();
+      //Extraemos las descripciones de los array
+      const nameBrand = marca[0].nombreMarca;
+      const nameCountry = paisCarro[0].nombrePais;
+
+      //Renderizamos la pantalla de nuevo cargando los campos llenados anteriormente
+      res.render('cars/new-car', {errors, countries, brands, nombreCarro, marcaCarro, 
+                                  nameBrand:nameBrand, modeloCarro, colorCarro, 
+                                  valorCarro, pais, nameCountry:nameCountry});
+    //Si todo está bien, guardar el carro en BD
+    }else{
+      await newCar.save();
+      req.flash('success_msg', '¡Carro agregado exitosamente!');
+      res.redirect('/cars');
+    }  
 }
 
 //Función asíncrona para traer el carro a editar y mostrarla en el formulario de edición

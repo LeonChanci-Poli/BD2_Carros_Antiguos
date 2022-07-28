@@ -123,5 +123,14 @@ usersCtrl.updateUser = async (req, res)=> {
     res.redirect('/cars');
 }
 
+usersCtrl.renderFormRecoverPass = (req, res)=> {
+    res.render('users/recover-password');
+}
+
+usersCtrl.recoverPassword = (req, res)=> {
+    req.flash('success_msg', '¡Correo enviado correctamente!');
+    res.redirect('/users/signin');
+}
+
 //Exportar el objeto indexCtrl
 module.exports = usersCtrl;

@@ -41,9 +41,31 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/purchase-cars">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    $ COMPRAR CARRO
+                                    COMPRAR CARRO
+                                </a>
+                            </div>      
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                            data-toggle="dropdown" aria-expanded="false">
+                                COMPRAS Y VENTAS
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">
+                                        <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                                        VER MIS COMPRAS
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    &nbsp;<i class="fa fa-usd" aria-hidden="true"></i>
+                                    &nbsp;VER MIS VENTAS
                                 </a>
                             </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                            data-toggle="dropdown" aria-expanded="false">
+                                EVENTOS
+                            </a>
                         </li>
                     {{else }}
                         <ul class="navbar-nav mg-auto">
@@ -63,11 +85,13 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/users/edit/{{ userId }}">
-                                    <i class="fa fa-user" aria-hidden="true"></i>MI PERFIL
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    MI PERFIL
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/users/logout">
-                                    <i class="fa fa-sign-out" aria-hidden="true"></i>LOGOUT
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    LOGOUT
                                 </a>
                             </div>
                         </li>

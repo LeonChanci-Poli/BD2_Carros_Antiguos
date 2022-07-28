@@ -8,33 +8,40 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" name="idPlaca" class="form-control" placeholder="Número Placa *" autofocus required>
+                            <input type="text" name="idPlaca" class="form-control" placeholder="Número Placa *" value="{{idPlaca}}" autofocus required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="nombreCarro" class="form-control" placeholder="Nombre Carro *" required>
+                            <input type="text" name="nombreCarro" class="form-control" placeholder="Nombre Carro *" value="{{nombreCarro}}" required>
                         </div>
                         <div class="form-group">
                             <select class="form-control" name="marcaCarro" required>
-                                <option value="" selected disabled hidden>Marca Carro *</option>
+                                {{#if marcaCarro}}
+                                    <option value="{{marcaCarro}}" selected >{{nameBrand}}</option>
+                                {{else }}
+                                    <option value="" selected disabled hidden>Marca Carro *</option>
+                                {{/if}}
                                 {{#each brands}}
                                     <option value={{idMarca}}>{{nombreMarca}}</option>
                                 {{/each}}
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="number" name="modeloCarro" class="form-control" placeholder="Modelo Carro *" required>
+                            <input type="number" name="modeloCarro" class="form-control" placeholder="Modelo Carro *" value="{{modeloCarro}}" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="colorCarro" class="form-control" placeholder="Color Carro *" required>
+                            <input type="text" name="colorCarro" class="form-control" placeholder="Color Carro *" value="{{colorCarro}}" required>
                         </div>                       
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="number" name="valorCarro" class="form-control" placeholder="Valor Carro $USD *" required>
+                            <input type="number" name="valorCarro" class="form-control" placeholder="Valor Carro $USD *" value="{{valorCarro}}" required>
                         </div>
                         <div class="form-group">
                             <select class="form-control" name="pais" required>
                                 <option value="" selected disabled>Pais *</option>
+                                {{#if pais}}
+                                    <option value="{{pais}}" selected >{{nameCountry}}</option>
+                                {{/if}}
                                 {{#each countries}}
                                     <option value={{idPais}}>{{nombrePais}}</option>
                                 {{/each}}
